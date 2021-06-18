@@ -4,6 +4,7 @@ class REDIS:
 
 
 class MODEL:
+    INPUT = "data/images/"
     FRAMEWORK = "tf"
     WEIGHTS = "checkpoints/yolov4-416"
     CLASSES = "data/classes/coco.names"

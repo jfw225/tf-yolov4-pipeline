@@ -31,7 +31,7 @@ def parse_args():
     # Parse command line arguments
     ap = argparse.ArgumentParser(
         description="TensorFlow YOLOv4 Image Processing Pipeline")
-    ap.add_argument("-i", "--input", default="data/images",
+    ap.add_argument("-i", "--input", default=cfg.MODEL.INPUT,
                     help="path to the input image/directory or list of file paths stored in a json file")
     ap.add_argument("-w", "--weights", default=cfg.MODEL.WEIGHTS,
                     help="path to weights file")
