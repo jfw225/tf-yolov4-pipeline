@@ -6,7 +6,7 @@ class REDIS:
 class MODEL:
     INPUT = "data/images/"
     FRAMEWORK = "tf"
-    WEIGHTS = "checkpoints/yolov4-416"
+    WEIGHTS = "checkpoints/yolov4-416-test"
     CLASSES = "data/classes/coco.names"
     IMAGE_SIZE = 416
     IOU_THRESH = 0.45

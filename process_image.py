@@ -82,6 +82,10 @@ def parse_args():
 def main(args):
     """ The main function for image processing. """
 
+    import pickle  # temp
+    with open('args.pkl', 'wb') as f:
+        pickle.dump(args, f)
+
     # Create output directory if needed
     os.makedirs(args.output, exist_ok=True)
 
@@ -121,9 +125,9 @@ def main(args):
 
     # Create the image processing pipeline
     pipeline = (image_input
-                >> predict
-                >> annotate_image
-                >> image_output)
+                >> predict)
+    # >> annotate_image
+    # >> image_output)
 
     # Wait for models to load before starting input stream
     while not predict.infer_ready():

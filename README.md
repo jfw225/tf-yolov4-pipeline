@@ -37,3 +37,13 @@ To submit images to the processing queue, open your `redis-cli` and publish a fi
 To read the output of the model, have a seperate `redis-cli` subscribe to the `bbox` channel:
 
     $ subscribe bbox
+
+
+
+## TODO
+
+add libdevice.10.bc
+deal with bilinear issue
+write model convertor from darknet weights
+do __call__ with pipe
+use cpu for non-predict functions in async
