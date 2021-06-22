@@ -31,23 +31,23 @@ def parse_args():
     # Parse command line arguments
     ap = argparse.ArgumentParser(
         description="TensorFlow YOLOv4 Image Processing Pipeline")
-    ap.add_argument("-i", "--input", default=cfg.MODEL.INPUT,
+    ap.add_argument("-i", "--input", default=cfg.MODEL.EVAL.INPUT,
                     help="path to the input image/directory or list of file paths stored in a json file")
-    ap.add_argument("-w", "--weights", default=cfg.MODEL.WEIGHTS,
+    ap.add_argument("-w", "--weights", default=cfg.MODEL.EVAL.WEIGHTS,
                     help="path to weights file")
-    ap.add_argument("-s", "--size", type=int, default=cfg.MODEL.IMAGE_SIZE,
+    ap.add_argument("-s", "--size", type=int, default=cfg.MODEL.EVAL.IMAGE_SIZE,
                     help="the value to which the images will be resized")
 
     # Model Settings
-    ap.add_argument("-f", "--framework", default=cfg.MODEL.FRAMEWORK,
+    ap.add_argument("-f", "--framework", default=cfg.MODEL.EVAL.FRAMEWORK,
                     help="the framework of the model")
     ap.add_argument("--tiny", action="store_true",
                     help="use yolo-tiny instead of yolo")
-    ap.add_argument("--iou", default=cfg.MODEL.IOU_THRESH,
+    ap.add_argument("--iou", default=cfg.MODEL.EVAL.IOU_THRESH,
                     help="iou threshold")
-    ap.add_argument("--score", default=cfg.MODEL.SCORE_THRESH,
+    ap.add_argument("--score", default=cfg.MODEL.EVAL.SCORE_THRESH,
                     help="score threshold")
-    ap.add_argument("--classes", default=cfg.MODEL.CLASSES,
+    ap.add_argument("--classes", default=cfg.MODEL.EVAL.CLASSES,
                     help="file path to classes")
 
     # Output Settings
@@ -125,9 +125,9 @@ def main(args):
 
     # Create the image processing pipeline
     pipeline = (image_input
-                >> predict)
-    # >> annotate_image
-    # >> image_output)
+                >> predict
+                >> annotate_image
+                >> image_output)
 
     # Wait for models to load before starting input stream
     while not predict.infer_ready():

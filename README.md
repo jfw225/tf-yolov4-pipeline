@@ -47,3 +47,4 @@ deal with bilinear issue
 write model convertor from darknet weights
 do __call__ with pipe
 use cpu for non-predict functions in async
+cpus corresponding to gpus
