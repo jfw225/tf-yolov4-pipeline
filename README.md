@@ -7,9 +7,7 @@ Modular image processing pipeline implementation of [tensorflow-yolov4-tflite] (
 
 This repo implements another repo: [tfpipe] (https://github.com/jfw225/tfpipe). To make sure that it is installed, do the following: 
 
-    $ cd tfpipe
-    $ git pull
-    $ cd ..
+    $ git submodule update --init --recursive
 
 Next, use your preferred package manager to install the packages listed in `requirements.txt`.
 

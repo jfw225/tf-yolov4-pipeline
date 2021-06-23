@@ -156,8 +156,8 @@ def main(args):
 
     # Metadata
     if args.meta:
-        results = [data["meta"] for data in results]
-        with open(os.path.join("output", "tf_meta.json"), 'w') as f:
+        results = [meta for data in results for meta in data["meta"]]
+        with open(os.path.join("output", "results.json"), 'w') as f:
             json.dump(results, f)
 
     # print("Results: " + str(results))
