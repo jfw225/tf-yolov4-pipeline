@@ -43,8 +43,6 @@ To read the output of the model, have a seperate `redis-cli` subscribe to the `b
 ## TODO
 
 add libdevice.10.bc
-deal with bilinear issue
-write model convertor from darknet weights
-do __call__ with pipe
 use cpu for non-predict functions in async
 cpus corresponding to gpus
+add save_model to readme

@@ -61,7 +61,7 @@ def main(args):
     pipeline = create_model >> convert_weights
 
     # Complete Task
-    pipeline.map(None)
+    pipeline(None)
 
 
 if __name__ == '__main__':

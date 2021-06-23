@@ -140,7 +140,7 @@ def main(args):
     index = 0
     results = list()
     while image_input.is_working() or predict.is_working():
-        result = pipeline.map(None)
+        result = pipeline(None)
         if result != Pipeline.Skip:
             results.append(result)
 
