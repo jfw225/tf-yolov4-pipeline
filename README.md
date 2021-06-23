@@ -5,25 +5,46 @@ Modular image processing pipeline implementation of [tensorflow-yolov4-tflite] (
 
 ## Setup environment
 
-Use your preferred package manager to install the packages listed in `requirements.txt`.
+This repo implements another repo: [tfpipe] (https://github.com/jfw225/tfpipe). To make sure that it is installed, do the following: 
+
+    $ cd tfpipe
+    $ git pull
+    $ cd ..
+
+Next, use your preferred package manager to install the packages listed in `requirements.txt`.
 
 Using pip:
 
     $ python -m pip install -r requirements.txt
 
+## Command Line Arguments and Config
+
+Each script (`save_model.py` and `process_images.py`) has a set of command line arguments. You can see a full list of these arguments by running:
+
+    $ python save_model.py --help
+    $ python process_images.py --help
+
+However, each of these parameters can also be changed in the `config.py` file.
+
+## Converting from Darknet
+
+First, change the config or set the parameters for your `.weights` file. Next, execute: 
+
+    $ python save_model.py
+
 ## Basic Usage
 
-Install the appropriate model, config, data, and class files. You can then use `process_image.py` to process images.
+Install the appropriate model, config, data, and class files. You can then use `process_images.py` to process images.
 
 Run the following command to see all of the available options:
 
-    $ python process_image.py --help
+    $ python process_images.py --help
 
 The `-i` or `--input` arguments are used to specify an input file path. The file path can either be a directory or a file, and the types of files that can be read are specified in `config.py`.
 
 Here is a demo call using the the COCO model from the repo linked above:
 
-    $ python process_image.py -w checkpoints/yolov4-416 -i data/
+    $ python process_images.py -w checkpoints/yolov4-416 -i data/
 
 
 ## Redis
@@ -45,4 +66,3 @@ To read the output of the model, have a seperate `redis-cli` subscribe to the `b
 add libdevice.10.bc
 use cpu for non-predict functions in async
 cpus corresponding to gpus
-add save_model to readme
