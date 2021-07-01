@@ -88,28 +88,8 @@ def main(args):
     # GPU Logging
     tf.debugging.set_log_device_placement(False)
 
-    # GPU Settings
-    # gpus = tf.config.list_physical_devices('GPU')
-    # for gpu in gpus:
-    #     print(gpu)
-    #     tf.config.experimental.set_memory_growth(gpu, False)
-    #     # gpu_cfg = [tf.config.LogicalDeviceConfiguration(memory_limit=5000),
-    #     #            tf.config.LogicalDeviceConfiguration(memory_limit=5000)]
-    #     gpu_cfg = [tf.config.LogicalDeviceConfiguration(memory_limit=5000)]
-    #     tf.config.set_logical_device_configuration(gpu, gpu_cfg)
-
-    # logical_devices = tf.config.list_logical_devices('GPU')
-    # print(logical_devices)
-    # tf.config.set_logical_device_configuration(
-    #     gpus[0],
-    #     [tf.config.LogicalDeviceConfiguration(memory_limit=500),
-    #      tf.config.LogicalDeviceConfiguration(memory_limit=500)])
-
-    # Config options
-    # gpu_config = tf.GPUOptions(
-    #     allow_growth=True, per_process_gpu_memory_fraction=0.33)
-    # sess_config = tf.ConfigProto()
-    # sess = tf.Session(config=sess_config)
+    # tf.config.threading.set_inter_op_parallelism_threads(10)
+    # tf.config.threading.set_intra_op_parallelism_threads(10)
 
     # Image output type
     output_type = "vis_image"

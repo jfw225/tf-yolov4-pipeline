@@ -83,5 +83,3 @@ wrap annotate in tf function
 abstract bounding box iterators
 
 abstract redis input and image input
-
-try xlagpu https://stackoverflow.com/questions/52943489/what-is-xla-gpu-and-xla-cpu-for-tensorflow
