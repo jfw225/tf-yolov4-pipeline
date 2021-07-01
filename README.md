@@ -64,3 +64,24 @@ To read the output of the model, have a seperate `redis-cli` subscribe to the `b
 add libdevice.10.bc
 use cpu for non-predict functions in async
 cpus corresponding to gpus
+wrap more things in tf.function
+
+
+figure out appropriate vram
+create multiple virtual gpus
+make sure the only gpu operations are in prediction
+get rid of superfluous keys in data
+
+write get_preproc function
+
+create virtual cpus
+
+change all to use tf functions (update redis)
+wrap preproc in tf function
+wrap annotate in tf function
+
+abstract bounding box iterators
+
+abstract redis input and image input
+
+try xlagpu https://stackoverflow.com/questions/52943489/what-is-xla-gpu-and-xla-cpu-for-tensorflow

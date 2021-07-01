@@ -1,7 +1,7 @@
 test.bat
+*.weights
 problem.png
 data/images/
 checkpoints/
 output/
-data/yolov4.weights
 venv/

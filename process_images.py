@@ -82,18 +82,34 @@ def parse_args():
 def main(args):
     """ The main function for image processing. """
 
-    import pickle  # temp
-    with open('args.pkl', 'wb') as f:
-        pickle.dump(args, f)
-
     # Create output directory if needed
     os.makedirs(args.output, exist_ok=True)
 
     # GPU Logging
     tf.debugging.set_log_device_placement(False)
-    gpus = tf.config.list_physical_devices('GPU')
-    for gpu in gpus:
-        tf.config.experimental.set_memory_growth(gpu, True)
+
+    # GPU Settings
+    # gpus = tf.config.list_physical_devices('GPU')
+    # for gpu in gpus:
+    #     print(gpu)
+    #     tf.config.experimental.set_memory_growth(gpu, False)
+    #     # gpu_cfg = [tf.config.LogicalDeviceConfiguration(memory_limit=5000),
+    #     #            tf.config.LogicalDeviceConfiguration(memory_limit=5000)]
+    #     gpu_cfg = [tf.config.LogicalDeviceConfiguration(memory_limit=5000)]
+    #     tf.config.set_logical_device_configuration(gpu, gpu_cfg)
+
+    # logical_devices = tf.config.list_logical_devices('GPU')
+    # print(logical_devices)
+    # tf.config.set_logical_device_configuration(
+    #     gpus[0],
+    #     [tf.config.LogicalDeviceConfiguration(memory_limit=500),
+    #      tf.config.LogicalDeviceConfiguration(memory_limit=500)])
+
+    # Config options
+    # gpu_config = tf.GPUOptions(
+    #     allow_growth=True, per_process_gpu_memory_fraction=0.33)
+    # sess_config = tf.ConfigProto()
+    # sess = tf.Session(config=sess_config)
 
     # Image output type
     output_type = "vis_image"
