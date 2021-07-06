@@ -1,4 +1,4 @@
-import re
+from tfpipe.pipeline.annotate_image import AnnotateImage
 from tfpipe.pipeline.pipeline import Pipeline
 import tensorflow as tf
 
@@ -6,10 +6,15 @@ from tfpipe.pipeline.pipeline import Pipeline
 from tfpipe.pipeline.image_input import ImageInput
 
 from time import time
+import pickle
 
 INPUT_PATH = "data/images/"
 MODEL_SIZE = 416
 META = False
+CLASSES = "data/classes/coco.names"
+IOU_THRESH = 0.45
+SCORE_THRESH = 0.25
+OUTPUT_TYPE = "vis_image"
 
 
 def main():
@@ -17,23 +22,26 @@ def main():
     # GPU Logging
     tf.debugging.set_log_device_placement(False)
 
-    tf.config.threading.set_inter_op_parallelism_threads(0)
-    tf.config.threading.set_intra_op_parallelism_threads(0)
+    # # Create Pipeline Tasks
+    # image_input = ImageInput(
+    #     path=INPUT_PATH, size=MODEL_SIZE, meta=META)
 
-    # Create Pipeline Tasks
-    image_input = ImageInput(
-        path=INPUT_PATH, size=MODEL_SIZE, meta=META)
+    annotate_image = AnnotateImage(
+        OUTPUT_TYPE, IOU_THRESH, SCORE_THRESH, META, CLASSES)
 
-    pipeline = image_input
+    pipeline = annotate_image  # image_input
+
+    data = pickle.load(open("test.pkl", "rb"))
 
     # Main Loop
     t = time()
     index = 0
     results = list()
-    while image_input.is_working():
-        result = pipeline(None)
+    # while image_input.is_working():
+    for _ in range(1000):
+        result = pipeline(data)
         if result != Pipeline.Skip:
-            results.append(result)
+            # results.append(result)
 
             index += 1
 
@@ -41,7 +49,7 @@ def main():
     print(
         f"Images Processed: {index} imgs | Runtime: {runtime} s | Rate: {index / runtime} imgs/s")
 
-    image_input.cleanup()
+    # image_input.cleanup()
 
     # print(results)
 

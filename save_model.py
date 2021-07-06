@@ -1,5 +1,5 @@
 import os
-from tfpipe.core import config
+from tensorflow.keras import mixed_precision
 
 import config as cfg
 
@@ -40,6 +40,10 @@ def parse_args():
 
 
 def main(args):
+
+    # Layer Config
+    # policy = mixed_precision.Policy('mixed_float16')
+    # mixed_precision.set_global_policy(policy)
 
     # Create Pipeline Tasks
     create_model = CreateModel(input_size=args.size,

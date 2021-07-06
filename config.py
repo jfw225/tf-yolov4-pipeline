@@ -6,17 +6,17 @@ class REDIS:
 class MODEL:
 
     class SAVE:
-        WEIGHTS = "data/fpsv2.weights"
-        CLASSES = "data/fps.names"
+        WEIGHTS = "data/yolov4.weights"
+        CLASSES = "data/classes/coco.names"
         FRAMEWORK = "tf"
         MODEL = "yolov4"
         IMAGE_SIZE = 416
         SCORE_THRESH = 0.2
-        OUTPUT = "checkpoints/fpsv2-yolov4-416"
+        OUTPUT = "checkpoints/yolov4-416"
 
     class EVAL:
         INPUT = "data/images/"
-        WEIGHTS = "checkpoints/yolov4-416-m"
+        WEIGHTS = "checkpoints/yolov4-416"
         CLASSES = "data/classes/coco.names"
         FRAMEWORK = "tf"
         IMAGE_SIZE = 416

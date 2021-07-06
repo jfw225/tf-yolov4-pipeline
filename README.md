@@ -61,6 +61,7 @@ To read the output of the model, have a seperate `redis-cli` subscribe to the `b
 
 ## TODO
 
+add git clone --recursive
 add libdevice.10.bc
 use cpu for non-predict functions in async
 cpus corresponding to gpus
@@ -72,14 +73,15 @@ create multiple virtual gpus
 make sure the only gpu operations are in prediction
 get rid of superfluous keys in data
 
-write get_preproc function
 
 create virtual cpus
 
 change all to use tf functions (update redis)
-wrap preproc in tf function
-wrap annotate in tf function
 
 abstract bounding box iterators
 
 abstract redis input and image input
+
+write tflite conversion
+
+for async in realtime, constantly have input add to fixed size queue. when gpu ready, popright.

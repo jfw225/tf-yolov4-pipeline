@@ -120,10 +120,7 @@ def main(args):
         image_output = ImageOutput(output_type, args)
 
     # Create the image processing pipeline
-    pipeline = (image_input
-                >> predict
-                >> annotate_image
-                >> image_output)
+    pipeline = image_input >> predict >> annotate_image >> image_output
 
     # Wait for models to load before starting input stream
     while not predict.infer_ready():
