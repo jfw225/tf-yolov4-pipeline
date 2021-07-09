@@ -1,6 +1,8 @@
 class REDIS:
-    REDIS_HOST = "127.0.0.1"
-    REDIS_PORT = 6379
+    HOST = "127.0.0.1"
+    PORT = 6379
+    CH_IN = ""
+    CH_OUT = ""
 
 
 class MODEL:

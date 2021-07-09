@@ -66,6 +66,7 @@ add libdevice.10.bc
 use cpu for non-predict functions in async
 cpus corresponding to gpus
 wrap more things in tf.function
+add use all gpus
 
 
 figure out appropriate vram

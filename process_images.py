@@ -67,6 +67,10 @@ def parse_args():
                     help="the host name for redis")
     ap.add_argument("-rp", "--redis-port", default=cfg.REDIS.REDIS_PORT,
                     help="the port for redis")
+    ap.add_argument("-rchi", "--redis-ch-in", default=cfg.REDIS.CH_IN,
+                    help="the redis input channel for frames")
+    ap.add_argument("-rcho", "--redis-ch-out", default=cfg.REDIS.CH_OUT,
+                    help="the redis output channel for predictions")
 
     # Mutliprocessing Settings
     ap.add_argument("--gpus", type=int, default=1,
@@ -108,7 +112,8 @@ def main(args):
                       charset='utf-8',
                       decode_responses=True)
 
-        image_input = RedisCapture(redis)
+        image_input = RedisCapture(
+            redis_info=(args.redis_host, args.redis_port, args.redis_ch_in), size=args.size)
         annotate_image = RedisAnnotate(
             output_type, args.iou, args.score, args.classes)
         image_output = RedisOutput(redis, output_type)
